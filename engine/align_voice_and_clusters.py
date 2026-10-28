@@ -2,15 +2,14 @@
 """
 Vlog-US-Studio-v1 — Phase B Voiceover Aligner & 4-Tier Elastic Cluster Planner
 (engine/align_voice_and_clusters.py)
-Inherits `2_script/director_blueprint.json` from Phase A + continuous `voice.mp3` (ElevenLabs / TTS):
+Inherits `_he_thong/contracts/director_blueprint.json` from Phase A + `1_input/voice.mp3` (ElevenLabs / TTS):
   1. Runs `faster-whisper` (`word_timestamps=True`) via 16kHz float32 numpy array (zero PyAV bug).
   2. Normalizes English numbers/currency ("45" <-> "forty five") for 100% `SequenceMatcher` accuracy.
   3. Slices continuous `voice.mp3` at `find_nearest_silence_valley` (25ms RMS window) into
-     `.cache/<EP_ID>/vo_slices/vo_cXX_bYY.wav` (48kHz Mono WAV, zero clipped word tails).
+     `_he_thong/vo_slices/vo_cXX_bYY.wav` (48kHz Mono WAV, zero clipped word tails).
   4. Locks exact millisecond `trigger_word` timestamps for `#FFD700` USD callouts & builds 52px subtitle cues.
-  5. Partitions 9-30 min episodes into natural chapter clusters (`c01..cN`, ~140s-220s) and solves
-     Delta_T via the 4-Tier Authentic Coverage Waterfall with exact integer-frame duration lock
-     (`|Video - Audio| == 0.000s`).
+  5. Partitions 9-30 min episodes into natural chapter clusters (`c01..cN`, ~120s-215s) inside
+     `_he_thong/contracts/timelines/edl_cXX.json` with exact integer-frame duration lock (`|Video - Audio| == 0.000s`).
 """
 
 from __future__ import annotations
@@ -583,7 +582,15 @@ def run_alignment_and_clustering(
             beat_lead_pads.append(default_lead_pad_sec)
 
     # 3. Partition into Chapter Clusters (`c01..cN`)
-    cluster_groups = partition_beats_into_clusters(beats, beat_total_durations)
+    cl_bounds = dna.get("pacing_and_script_rules", {}).get("cluster_duration_sec", [120.0, 215.0])
+    min_cl = float(cl_bounds[0]) if len(cl_bounds) >= 2 else 120.0
+    max_cl = float(cl_bounds[1]) if len(cl_bounds) >= 2 else 215.0
+    cluster_groups = partition_beats_into_clusters(beats, beat_total_durations, min_cluster_sec=min_cl, max_cluster_sec=max_cl)
+
+    sub_typo = dna.get("typography_specs", {}).get("subtitle_en", {})
+    sub_max_chars = int(sub_typo.get("max_chars_per_line", 42))
+    sub_max_lines = int(sub_typo.get("max_lines", 2))
+    usd_default_dur = float(dna.get("typography_specs", {}).get("usd_callout", {}).get("default_duration_sec", 4.5))
 
     slices_dir = ep_paths["vo_slices_dir"]
     slices_dir.mkdir(parents=True, exist_ok=True)
@@ -604,7 +611,6 @@ def run_alignment_and_clustering(
         cid = f"c{c_idx:02d}"
         cluster_cursor_sec = 0.0
         cluster_beats_edl: List[Dict[str, Any]] = []
-        broll_requests: List[Dict[str, Any]] = []
 
         for bi in beat_indices:
             beat = beats[bi]
@@ -634,6 +640,8 @@ def run_alignment_and_clustering(
                 slice_start_sec=vo_s0,
                 timeline_vo_start_sec=vo_start_in_cluster,
                 slice_dur_sec=vo_dur,
+                max_chars_per_line=sub_max_chars,
+                max_lines=sub_max_lines,
             )
 
             # USD Callout trigger word lock
@@ -649,7 +657,7 @@ def run_alignment_and_clustering(
                             trig_offset_in_vo = max(0.0, float(wobj["start"]) - vo_s0)
                             break
                 cal_start = round(vo_start_in_cluster + trig_offset_in_vo, 3)
-                cal_dur = float(cal.get("duration_sec", 4.2))
+                cal_dur = float(cal.get("duration_sec", usd_default_dur))
                 cal_end = round(min(cluster_cursor_sec + t_beat - 0.15, cal_start + cal_dur), 3)
                 callout_edl = {
                     "label": str(cal["label"]),
@@ -851,7 +859,6 @@ def run_alignment_and_clustering(
             "clean_room_tone_wav": telemetry.get("audio_telemetry", {}).get(
                 "clean_room_tone_wav", str(bins.SHARED_DIR / "audio" / "room_tone_default.wav")
             ),
-            "broll_requests": broll_requests,
             "beats": cluster_beats_edl,
         }
         edl_path = timelines_dir / f"edl_{cid}.json"

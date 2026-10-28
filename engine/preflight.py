@@ -170,9 +170,9 @@ def run_preflight(episode_id: str | None = None) -> Tuple[bool, Dict[str, object
     def record(name: str, ok: bool, detail: str) -> None:
         checks.append({"check": name, "ok": ok, "detail": detail})
 
-    # 1. Studio isolation check
+    # 1. Studio structure & isolation check
     studio_str = str(bins.STUDIO_ROOT)
-    isolated = ("Lifestyle Vlog US" not in studio_str) and (bins.ENGINE_DIR.exists())
+    isolated = (bins.ENGINE_DIR.is_dir()) and (bins.SHARED_DIR.is_dir()) and (bins.SKILL_DIR.is_dir())
     record("studio_isolation", isolated, f"STUDIO_ROOT={studio_str}")
 
     # 2. FFmpeg & FFprobe / probe_media
@@ -185,7 +185,7 @@ def run_preflight(episode_id: str | None = None) -> Tuple[bool, Dict[str, object
         record("ffmpeg_binary", False, str(exc))
 
     # 3. Core Python packages
-    for pkg in ("numpy", "PIL", "faster_whisper", "yt_dlp", "edge_tts"):
+    for pkg in ("numpy", "PIL", "faster_whisper", "imageio_ffmpeg", "yt_dlp"):
         try:
             mod = importlib.import_module(pkg)
             ver = getattr(mod, "__version__", "installed")

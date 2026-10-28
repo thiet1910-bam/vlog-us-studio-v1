@@ -1,6 +1,6 @@
 # 🎬 Vlog-US-Studio-v1
 
-**2-Phase Authentic Documentary Production Engine** (AI Director Phase A $\rightarrow$ Human Approval Gate $\rightarrow$ Automated 4-Layer Audio, Burned Typography & 6-Track CapCut Editor Phase B) built for US-targeted lifestyle & family documentary channels (`10–30+ min` episodes).
+**2-Phase Authentic Documentary Production Engine** (AI Director Phase A → Human Approval Gate → Automated 4-Layer Audio, Burned Typography & 6–7 Track CapCut Editor Phase B) built for US-targeted lifestyle & family documentary channels (`10–30+ min` episodes).
 
 ---
 
@@ -11,7 +11,7 @@ Mỗi tập phim (`episodes/<EP_ID>/`) chỉ hiển thị **3 ngăn thư mục s
 ```text
 Vlog-US-Studio-v1/
 ├── .agent/skills/vlog-us-studio/   # Bộ điều phối AI (SKILL.md, brand_dna_us.json, references/, templates/)
-├── engine/                         # 10 công cụ xử lý hình ảnh, âm thanh 4 lớp, phụ đề ASS & CapCut Bridge
+├── engine/                         # 12 module xử lý hình ảnh, âm thanh 4 lớp, phụ đề ASS & CapCut Bridge (+ pycapcut/)
 ├── shared/                         # Font chữ, LUT chuẩn màu, âm thanh phòng, tiếng gõ nhãn USD & guitar mộc
 ├── episodes/                       # Thư mục chứa từng tập phim (được .gitignore để giữ sạch kho mã nguồn)
 │   └── <EP_ID>/

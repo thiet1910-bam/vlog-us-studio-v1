@@ -70,8 +70,11 @@ def write_cluster_ass_and_srt(
 
     font_name = str(sub_spec.get("font_name", "Segoe UI"))
     sub_fs = int(sub_spec.get("font_size_px", 52))
+    sub_outline = float(sub_spec.get("outline_px", 3.4))
+    sub_shadow = float(sub_spec.get("shadow_px", 1.8))
     sub_margin_v = int(sub_spec.get("margin_v_px", 65))
     usd_fs = int(usd_spec.get("font_size_px", 44))
+    usd_pad = float(usd_spec.get("outline_px", 14.0))
     pos_x = int(usd_spec.get("position_x_px", 88))
     pos_y = int(usd_spec.get("position_y_px", 88))
 
@@ -91,9 +94,9 @@ def write_cluster_ass_and_srt(
         "Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, "
         "Alignment, MarginL, MarginR, MarginV, Encoding",
         f"Style: SubEN,{font_name},{sub_fs},&H00FFFFFF,&H00FFFFFF,&H00000000,&H88000000,"
-        f"-1,0,0,0,100,100,0,0,1,3.4,1.8,2,90,90,{sub_margin_v},1",
+        f"-1,0,0,0,100,100,0,0,1,{sub_outline:.1f},{sub_shadow:.1f},2,90,90,{sub_margin_v},1",
         f"Style: USDTag,{font_name},{usd_fs},&H0000D7FF,&H0000D7FF,&H381A1A1A,&H80000000,"
-        f"-1,0,0,0,100,100,0.4,0,3,14.0,0.0,7,40,40,40,1",
+        f"-1,0,0,0,100,100,0.4,0,3,{usd_pad:.1f},0.0,7,40,40,40,1",
         "",
         "[Events]",
         "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text",

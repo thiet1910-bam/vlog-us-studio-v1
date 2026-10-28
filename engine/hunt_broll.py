@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-Vlog-US-Studio-v1 — Phase B External B-Roll Hunter & Documentary Color Unifier (engine/hunt_broll.py)
-Fetches clean, watermark-free external B-roll ONLY when Tier 1/2/3 authentic clips need supplementation:
+Vlog-US-Studio-v1 — Phase A Step A2 (Post-Human-Approval) External B-Roll Hunter (engine/hunt_broll.py)
+Fetches clean, watermark-free external B-roll ONLY AFTER the user approves `1_kich_ban_hoan_chinh.md`
+(`human_approved == True`) and explicitly marks `coverage_plan.broll_approved == True`:
   1. Waterfall Search (Prioritizing 100% License-Safe & Zero-Watermark Sources):
      - Tier A: Pexels API (if PEXELS_API_KEY) / Pixabay API (if PIXABAY_API_KEY)
      - Tier B: Wikimedia Commons Free Video (`filetype:video`, progressive keyword simplification)
      - Tier C: Wikimedia Commons High-Res Documentary Photography (`>= 1280px` CC-BY/CC0 + gentle 6% Ken Burns)
      - Tier D: Short raw stock clips (`< 90s`, excluding compilation/listicle channels) via `yt-dlp`
                + FFmpeg local slicing (avoids standalone `ffprobe` dependency in `yt-dlp`).
-  2. Normalizes clip to exact `1920x1080 @ 30.00fps`, `yuv420p`, **100% MUTED (`-an`)**,
-     and applies `shared/luts/warm_doc_unify.cube` so external shots match Uncle Dinh's warm tone.
-  3. Renders a 3-frame Candidate QA Contact Strip in `.cache/<EP_ID>/broll_candidates/` for visual audit.
-  4. Records license & source URL into `3_edl_and_assets/broll/broll_manifest.json`.
+  2. Normalizes clip to exact `1920x1080 @ 30.00fps`, `yuv420p` (`bt709`, `tv` range), **100% MUTED (`-an`)**,
+     and saves approved clips into `2_pha_A_kich_ban/3_broll_bo_sung/`.
+  3. Renders a 3-frame Candidate QA Contact Strip in `_he_thong/broll_candidates/` for visual audit.
+  4. Records license & source URL into `_he_thong/contracts/broll_manifest.json`.
 """
 
 from __future__ import annotations

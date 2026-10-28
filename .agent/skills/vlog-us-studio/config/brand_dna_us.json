@@ -1,5 +1,5 @@
 {
-  "studio_version": "1.1.0",
+  "studio_version": "1.0.0",
   "channel_identity": {
     "channel_name": "Uncle Dinh - Simple Life at 50",
     "protagonist": {
@@ -44,7 +44,7 @@
     "level": "4.1",
     "pix_fmt": "yuv420p",
     "crf": 18,
-    "preset": "medium",
+    "preset": "fast",
     "color_primaries": "bt709",
     "color_trc": "bt709",
     "colorspace": "bt709"
@@ -72,9 +72,9 @@
     "vo_ratio_target": [0.52, 0.65],
     "asmr_ratio_target": [0.35, 0.48],
     "asmr_pause_interval_sec": [30, 65],
-    "asmr_pause_duration_sec": [4.0, 16.0],
+    "asmr_pause_duration_sec": [4.0, 32.0],
     "shot_duration_target_sec": [4.5, 6.5],
-    "cluster_duration_sec": [140.0, 220.0],
+    "cluster_duration_sec": [120.0, 215.0],
     "exchange_rate_vnd_per_usd": 25500,
     "require_usd_conversion": true,
     "min_vn_us_cultural_bridges_per_10min": 2,
@@ -113,10 +113,10 @@
       "font_size_px": 52,
       "primary_color_hex": "#FFFFFF",
       "outline_color_hex": "#000000",
-      "outline_px": 3.2,
-      "shadow_px": 1.5,
+      "outline_px": 3.4,
+      "shadow_px": 1.8,
       "margin_v_px": 65,
-      "max_chars_per_line": 44,
+      "max_chars_per_line": 42,
       "max_lines": 2
     },
     "usd_callout": {
@@ -126,10 +126,10 @@
       "primary_color_hex": "#FFD700",
       "box_bg_hex": "#1A1A1A",
       "box_alpha": 0.78,
-      "outline_px": 2.5,
-      "position_x_px": 100,
-      "position_y_px": 115,
-      "default_duration_sec": 4.2
+      "outline_px": 14.0,
+      "position_x_px": 88,
+      "position_y_px": 88,
+      "default_duration_sec": 4.5
     }
   },
   "qa_critic_thresholds": {

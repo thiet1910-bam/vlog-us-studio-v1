@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """
 Vlog-US-Studio-v1 — Phase A Rough Video Visual & Audio Scanner (engine/scan_rough_video.py)
-1. Loads (or generates) `2_script/source_conform_map.json`.
-2. Extracts timestamped 4x5 Contact Sheets (`.cache/<EP_ID>/contact_sheets/sheet_XX.jpg`)
+1. Loads (or generates) `_he_thong/scan/source_conform_map.json`.
+2. Extracts timestamped 4x5 Contact Sheets (`_he_thong/scan/contact_sheets/sheet_XX.jpg`)
    across every shot + every 8s inside long takes so the AI Director sees 100% of ground-truth reality.
 3. Runs `faster-whisper` (`language="vi"`, `vad_filter=True`) + anti-hallucination filter + 48kHz RMS/peak analysis
    to classify location audio into `VN_SPEECH_LEAK`, `CLIPPING_NOISE`, and `CLEAN_ASMR`.
-4. Extracts authentic `clean_room_tone.wav` (48kHz Stereo) from Uncle Dinh's actual house for seamless leak patching.
-5. Writes `2_script/rough_video_telemetry.json`.
+4. Extracts authentic `_he_thong/scan/clean_room_tone.wav` (48kHz Stereo) for seamless leak patching.
+5. Writes `_he_thong/scan/rough_video_telemetry.json`.
 """
 
 from __future__ import annotations

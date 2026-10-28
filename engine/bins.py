@@ -198,7 +198,7 @@ def resolve_ffprobe() -> Optional[str]:
 def ffmpeg_escape_filter_path(path: Path | str) -> str:
     """
     Escape Windows absolute path for FFmpeg `-vf subtitles=...` or `ass=...`.
-    Example: `E:\\02_CHANNEL\\sub.ass` -> `E\\:/02_CHANNEL/sub.ass`
+    Example: `D:\\Studio\\sub.ass` -> `D\\:/Studio/sub.ass`
     """
     raw = str(Path(path).resolve()).replace("\\", "/")
     # Escape single quotes, colons, brackets, commas for libavfilter syntax
