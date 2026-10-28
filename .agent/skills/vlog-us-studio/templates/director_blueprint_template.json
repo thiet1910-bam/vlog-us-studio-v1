@@ -1,0 +1,49 @@
+{
+  "episode_id": "EP_MAU",
+  "episode_title_en": "Episode English Title for US Audience",
+  "human_approved": false,
+  "preserve_rough_cut": true,
+  "target_duration_sec": 600.0,
+  "visual_corrections_md": "## 🔍 BẢNG HIỆU ĐÍNH TỪ KỊCH BẢN SƠ BỘ SANG ĐÚNG HÌNH THẬT TRÊN VIDEO\n*(Ghi rõ các điểm đã chỉnh theo hình thật của video_so_bo.mp4)*",
+  "chapters": [
+    {
+      "chapter_id": "ch1",
+      "title_vi": "Phần 1: Mở đầu buổi sáng (00:00 – 02:30)"
+    }
+  ],
+  "beats": [
+    {
+      "beat_id": "b01",
+      "chapter_id": "ch1",
+      "rough_in_sec": 0.0,
+      "rough_out_sec": 25.0,
+      "visual_ground_truth_vi": "Mô tả chính xác 100% cảnh thật đang diễn ra trên video_so_bo.mp4",
+      "narration_en": "Clean first-person English narration without any bracketed stage tags.",
+      "narration_vi": "Bản dịch nghĩa tiếng Việt tự nhiên để người dùng đọc duyệt nhanh.",
+      "asmr_pause_after_sec": 6.0,
+      "asmr_description": "Mô tả tiếng động đời thực khán giả sẽ nghe trong khoảng nghỉ này",
+      "primary_source": {
+        "file": "episodes/EP_MAU/1_input/video_so_bo.mp4",
+        "in_sec": 0.0,
+        "out_sec": 25.0,
+        "head_handle_sec": 0.0,
+        "tail_handle_sec": 0.0
+      },
+      "coverage_plan": {
+        "broll_approved": false,
+        "broll_proposal_note_vi": "Dùng 100% hình gốc nhà chú Định.",
+        "tier2_unused_select": null,
+        "tier3_vault_clip": null,
+        "tier4_broll_query": null,
+        "force_v2_cutaway_sec": 0.0
+      },
+      "usd_callout": {
+        "label": "Morning Rice for 6 People: $0.45 USD",
+        "trigger_word": "forty-five",
+        "duration_sec": 4.5
+      },
+      "vn_us_bridge_topic": "Điểm chạm tâm sự văn hóa Việt – Mỹ (nếu có ở phân đoạn này)",
+      "outro_bgm": false
+    }
+  ]
+}

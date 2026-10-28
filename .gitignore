@@ -1,0 +1,30 @@
+# =====================================================================
+# Vlog-US-Studio-v1 — Clean Repository .gitignore
+# Excludes all user episode inputs, rendered outputs, caches, and temp files
+# =====================================================================
+
+# Exclude ALL episode data (1_input, 2_pha_A_kich_ban, 3_pha_B_video, _he_thong)
+episodes/*
+!episodes/.gitkeep
+
+# Exclude personal B-roll vault media while keeping folder structure
+shared/uncle_dinh_broll_vault/*
+!shared/uncle_dinh_broll_vault/.gitkeep
+
+# Python & IDE caches
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.env
+*.log
+.cache/
+.DS_Store
+Thumbs.db
+
+# Stray media safety guard at root
+/*.mp4
+/*.mp3
+/*.wav
+/*.srt

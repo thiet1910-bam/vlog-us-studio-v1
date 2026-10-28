@@ -1,0 +1,141 @@
+{
+  "studio_version": "1.1.0",
+  "channel_identity": {
+    "channel_name": "Uncle Dinh - Simple Life at 50",
+    "protagonist": {
+      "full_name_vi": "Lưu Đình Định",
+      "english_persona": "Uncle Dinh",
+      "age": 50,
+      "role": "Grandfather of two (ages 2 and 1), head of a 3-generation 6-person rural household",
+      "location": "Rural village in Thanh Hoa Province, Vietnam",
+      "house_facts": {
+        "footprint": "5m wide x 15m long (approx. 16.4ft x 49.2ft, ~800 sq ft per floor)",
+        "bedrooms": 2,
+        "household_members": [
+          "Uncle Dinh (50) — sleeps on a simple wooden bed tucked into the ground-floor alcove beneath the wooden staircase",
+          "Wife — sleeps upstairs in Bedroom 2 with 1-year-old grandson Khoi",
+          "Daughter & Son-in-law — sleep upstairs in Bedroom 1 with the 2-year-old grandson"
+        ],
+        "verified_home_details": [
+          "Folding metal street gate opening onto a rural village lane under yellow streetlights",
+          "Living room with carved wooden chairs, blue folding hammock, and red plastic toy basket",
+          "Family kitchen with speckled granite counter, wooden upper cabinets, Toshiba fridge, baby formula tin, and green rice cooker",
+          "White powder-coated steel baby gate anchored to the round carved wooden stair post with a woven olive-green nylon strap"
+        ],
+        "neighborhood": "50 meters from the village morning market and 80-year-old mother-in-law's house"
+      }
+    },
+    "target_audience_us": {
+      "primary_demographics": "US viewers aged 35-75+ (especially 50-75+ retirees/pre-retirees watching on Smart TV & iPad)",
+      "core_personas": [
+        "Margaret & Robert (62-74, suburban US retirees seeking calm, authentic family warmth, and practical resourcefulness)",
+        "David & Helen (45-60, working professionals decompressing from screen fatigue and high US living costs)"
+      ],
+      "emotional_tone": "Dignified, warm, grounded, observant, practical, WITHOUT bitterness, self-pity, or begging"
+    }
+  },
+  "video_master_specs": {
+    "width": 1920,
+    "height": 1080,
+    "aspect_ratio": "16:9",
+    "fps": 30,
+    "video_codec": "libx264",
+    "profile": "high",
+    "level": "4.1",
+    "pix_fmt": "yuv420p",
+    "crf": 18,
+    "preset": "medium",
+    "color_primaries": "bt709",
+    "color_trc": "bt709",
+    "colorspace": "bt709"
+  },
+  "audio_master_specs": {
+    "sample_rate": 48000,
+    "channels": 2,
+    "audio_codec": "aac",
+    "audio_bitrate": "256k",
+    "vo_target_lufs": -14.0,
+    "asmr_under_vo_db": -18.0,
+    "asmr_pause_showcase_db": -6.0,
+    "ducking_transition_sec": 0.4,
+    "location_highpass_hz": 80,
+    "location_crossfade_sec": 0.3,
+    "bgm_outro_db": -26.0,
+    "usd_tick_sfx_db": -24.0,
+    "master_ceiling_dbfs": -1.2
+  },
+  "pacing_and_script_rules": {
+    "target_wpm": 126,
+    "wpm_min": 110,
+    "wpm_max": 142,
+    "words_per_second": 2.1,
+    "vo_ratio_target": [0.52, 0.65],
+    "asmr_ratio_target": [0.35, 0.48],
+    "asmr_pause_interval_sec": [30, 65],
+    "asmr_pause_duration_sec": [4.0, 16.0],
+    "shot_duration_target_sec": [4.5, 6.5],
+    "cluster_duration_sec": [140.0, 220.0],
+    "exchange_rate_vnd_per_usd": 25500,
+    "require_usd_conversion": true,
+    "min_vn_us_cultural_bridges_per_10min": 2,
+    "banned_ai_slop_words": [
+      "delve",
+      "tapestry",
+      "testament",
+      "symphony",
+      "nestled",
+      "beacon",
+      "embark",
+      "whispers of",
+      "dance of",
+      "in conclusion",
+      "moreover",
+      "furthermore",
+      "it is worth noting",
+      "bustling metropolis",
+      "unwavering",
+      "poignant reminder",
+      "transcends",
+      "kaleidoscope"
+    ],
+    "banned_pity_phrases": [
+      "we are very poor",
+      "please subscribe to help",
+      "pity us",
+      "miserable life",
+      "donate to our family"
+    ]
+  },
+  "typography_specs": {
+    "subtitle_en": {
+      "font_file": "segoeuib.ttf",
+      "font_name": "Segoe UI",
+      "font_size_px": 52,
+      "primary_color_hex": "#FFFFFF",
+      "outline_color_hex": "#000000",
+      "outline_px": 3.2,
+      "shadow_px": 1.5,
+      "margin_v_px": 65,
+      "max_chars_per_line": 44,
+      "max_lines": 2
+    },
+    "usd_callout": {
+      "font_file": "segoeuib.ttf",
+      "font_name": "Segoe UI",
+      "font_size_px": 44,
+      "primary_color_hex": "#FFD700",
+      "box_bg_hex": "#1A1A1A",
+      "box_alpha": 0.78,
+      "outline_px": 2.5,
+      "position_x_px": 100,
+      "position_y_px": 115,
+      "default_duration_sec": 4.2
+    }
+  },
+  "qa_critic_thresholds": {
+    "max_av_drift_ms": 80.0,
+    "max_black_frame_sec": 0.1,
+    "max_unintended_silence_sec": 2.5,
+    "max_peak_dbfs": -1.0
+  }
+}
